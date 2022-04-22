@@ -242,14 +242,14 @@ class HubConnection(object):
 		except Exception as e:
 			raise SendTransportError() from e
 
-	def _onTransportOpen(self):
+	def _onTransportOpen(self, ws):
 		self.logger.debug("transport opened")
 		self._sendHandshake()
 
-	def _onTransportClose(self):
+	def _onTransportClose(self, ws):
 		self.logger.debug("transport closed")
 
-	def _onTransportError(self, err):
+	def _onTransportError(self, ws, err):
 		try:
 			self.transport.onError(err)
 
@@ -257,7 +257,7 @@ class HubConnection(object):
 			self.logger.exception("transport error {0}".format(errTransport))
 			self.stop()
 
-	def _onTransportMessage(self, message):
+	def _onTransportMessage(self, ws, message):
 		self.connectionChecker.lastReceived = time.time()
 		self.logger.debug("message received {0}".format(Util.getSliced(message)))
 		decoded = self.protocol.decode(message)
