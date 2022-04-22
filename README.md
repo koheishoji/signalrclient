@@ -99,13 +99,13 @@ If connection is lost because of poor network or something, signalrclient tries 
 
 # Requirement
 
-* websocket
+* websocket-client
 
 
 # References
 
 * SignalR Specification
-https://github.com/dotnet/aspnetcore/tree/main/src/SignalR/docs/specs
+  https://github.com/dotnet/aspnetcore/tree/main/src/SignalR/docs/specs
 
 
 # License
