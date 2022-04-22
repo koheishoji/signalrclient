@@ -246,7 +246,7 @@ class HubConnection(object):
 		self.logger.debug("transport opened")
 		self._sendHandshake()
 
-	def _onTransportClose(self, ws):
+	def _onTransportClose(self, ws, close_status_code, close_message):
 		self.logger.debug("transport closed")
 
 	def _onTransportError(self, ws, err):
